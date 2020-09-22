@@ -36,8 +36,15 @@
 
                     </ul>
 
+                   
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/create">Manage Tasks</a>
+                        </li>
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -73,8 +80,33 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
             @yield('content')
         </main>
+        <footer class="text-muted mt-5">
+            <div class="container">
+                <hr>
+                <p class="float-right">
+                    <a href="#">Back to top</a>
+                </p>
+                
+                <p>
+                    &copy; GoTask <a href="#">About Us</a> ,
+                    <a href="#">Privacy Policy</a> ,
+                    <a href="#">Terms & Conditions</a> 
+                </p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

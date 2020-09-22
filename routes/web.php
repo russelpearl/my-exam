@@ -13,10 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','TaskController@index');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/details/{id}','TaskController@show')->middleware('verified');
+
+Route::get('/create','TaskController@create')->middleware('verified');
+
+Route::post('/store','TaskController@store')->middleware('verified');
+
+Route::post('/update/{id}','TaskController@update')->middleware('verified');
+
+Route::get('/edit/{id}','TaskController@edit')->middleware('verified');
+
+Route::get('/delete/{id}','TaskController@destroy')->middleware('verified');
+
+// Auth::routes();
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
