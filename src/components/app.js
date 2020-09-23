@@ -9,9 +9,9 @@ import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import EditTask from "./src/components/edit-task.component";
-import TaskList from "./src/components/task-listing.component";
-import CreateTask from "./src/components/create-task.component";
+import EditTask from "./edit-task.component";
+import TaskList from "./task-listing.component";
+import CreateTask from "./create-task.component";
 
 function App() {
   return (<Router>
@@ -44,7 +44,6 @@ function App() {
       <Container>
         <Row>
           <Col md={12}>
-          <meta name="csrf-token" content="{{ csrf_token() }}" />
             <div className="wrapper">
               <Switch>
                 <Route exact path='/' component={CreateTask} />

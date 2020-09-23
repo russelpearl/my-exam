@@ -14,15 +14,26 @@ export default class TaskList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/api/task_data/')
-      .then(res => {
-        this.setState({
-          task: res.data
-        });
+    // axios.get('http://localhost:8000/api/task_data/')
+    //   .then(res => {
+    //     this.setState({
+    //       task: res.data
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   })
+    axios({
+      method: 'get',
+      url: 'http://localhost:8000/api/task_data/',
+      }).then(res => {
+            this.setState({
+              task: res.data
+            });
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
   }
 
   DataTable() {
@@ -40,6 +51,7 @@ export default class TaskList extends Component {
             <th>Name</th>
             <th>Description</th>
             <th>Due</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
